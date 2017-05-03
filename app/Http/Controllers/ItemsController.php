@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Item;
 
 class ItemsController extends Controller
 {
@@ -26,7 +27,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        //
+        return view ('items.new');
     }
 
     /**
@@ -37,7 +38,18 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $item = new Item;
+        $item->title = $data ['title'];
+        $item->content = $data ['content'];
+        $item->user_id = 1;
+        if ($item->save())
+        {
+            return redirect()->action('ItemsController@index');
+        }
+        else
+            return redirect()->action('ItemsController@create');
     }
 
     /**
