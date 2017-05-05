@@ -32,3 +32,7 @@ Route::post('/item/{id}/edit','ItemsController@update');
 
 //brisanje Item-a
 Route::delete('/item/{id}','ItemsController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
