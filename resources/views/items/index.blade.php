@@ -7,7 +7,7 @@
     @if (count ($items) > 0 )
     	@foreach ($items as $item)
         	<h2><a href="items/{{ $item->id}}">{{ $item->title }}</a></h2>
-        	
+        	<div>{{ $item->created_at }}</div>
         @endforeach
     @else
         <h2> Nema zapisa u Blogu! </h2>
